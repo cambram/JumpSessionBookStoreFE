@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Login from 'src/app/Models/login';
 import { LoginService } from 'src/app/Services/login.service';
 import { NavService } from 'src/app/Shared-Services/nav.service';
 
@@ -31,10 +32,20 @@ export class LoginComponent {
     //     this.errorMessage = 'An error occurred. Please try again.';
     //   }
     // );
-    this.loginService.login(this.username, this.password).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/users');
-        this.navService.toggleNav();
+    let loginObj: Login = {
+      username: this.username,
+      password: this.password
+    }
+
+    this.loginService.login(loginObj).subscribe(
+      {
+      next: (res: boolean) => {
+        if (res) {
+          this.router.navigateByUrl('/users');
+          this.navService.toggleNav();
+        } else {
+          this.errorMessage = 'Username and password are incorrect.';
+        }
       },
       error: () => {
         this.errorMessage = 'An error occurred. Please try again.';
