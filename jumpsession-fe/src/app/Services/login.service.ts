@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import Login from '../Models/login';
+import { Admin } from '../Models/Admin';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +14,25 @@ export class LoginService {
 
   //ToDo: write Login endpoint to handle log in, leave this as is for them to fix with correct endpoint, Maybe
   // login(username: string, password: string): Observable<boolean> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
     
-  //   return this.http.get<any>(`${this.apiUrl}/post-login_details`, { headers })
+  //   return this.http.get<boolean>(`${this.apiUrl}/post-login_details`, { headers })
   //     .pipe(map(response => {
-  //       // for (let admin of response) {
-  //       //   if (admin.username === username && admin.password === password) {
-  //       //     return true;
-  //       //   }
-  //       // }
-  //       console.log("Hello");
-  //       return /*response.status;*/ false;
+  //       for (let admin of response) {
+  //         if (admin.username === username && admin.password === password) {
+  //           return true;
+  //         }
+  //       }
+  //       return false;
+  //       console.log(response);
+  //       return response.status;
   //     }));
   // }
 
-  login(login: Login): Observable<boolean>{
-    return this.http.post<boolean>(`${this.apiUrl}/post-login_details`,login);
+
+  checkdetail(admin: Admin){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<boolean>(`${this.apiUrl}/post-login_details`, admin, {headers }  )
+      
   }
 }
