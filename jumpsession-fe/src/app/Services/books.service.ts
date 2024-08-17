@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Book } from '../Models/book';
@@ -27,4 +27,20 @@ export class BooksService {
         })
       );
   }
+
+  deleteBook( id:number): Observable<Book[]> {
+    const headers = new HttpHeaders( { 'Content-Type': 'application/json'});
+
+    return this.httpClient.delete<Book[]>(`${this.apiUrl}/delete-book/${id}`, {headers})
+    .pipe(
+      map(response => {
+        return response; // Assuming the response is an array of books
+      }),
+      catchError(error => {
+        console.error('Error deleting the book:', error);
+        return throwError('Error deleting the book, please try again later.');
+      })
+    );
+  }
+
 }
