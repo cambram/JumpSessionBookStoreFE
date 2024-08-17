@@ -11,6 +11,12 @@ export class AddbookComponent {
   @Output() close = new EventEmitter<void>();
   @Output() bookAdded = new EventEmitter<Book>();
 
+  book: Omit<Book, 'id'> = {
+    book_name: '',
+    isbn_number: '',
+    author: ''
+  };
+
   constructor(private booksService: BooksService) { }
 
   closeModal() {
