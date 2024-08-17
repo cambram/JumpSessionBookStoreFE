@@ -13,6 +13,7 @@ export class BooksComponent {
   filteredBooks: Book[] = [];
   searchTerm: string = '';
   errorMessage: string = '';
+  id : number = 0;
 
   isAddBookModalVisible: boolean = false;
 
@@ -40,6 +41,13 @@ export class BooksComponent {
 
   onRowClick(book: Book): void {
     console.log('Row clicked:', book);
+    alert("Book ?");
+    this.bookService.deleteBookById(book.id).subscribe({
+      next: ()=>{
+        console.log("Deleted");
+      }
+
+    })
   }
 
   openAddBookModal() {

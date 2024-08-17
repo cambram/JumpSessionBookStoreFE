@@ -28,18 +28,9 @@ export class BooksService {
       );
   }
 
-  addBook(book:Book): Observable<Book[]>{
+ deleteBookById(id : number): Observable<boolean> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.httpClient.post<Book[]>(`${this.apiUrl}/create-book`,book, { headers })
-      .pipe(
-        map(response => {
-          return response; // Assuming the response is an array of books
-        }),
-        catchError(error => {
-          console.error('Error adding book:', error);
-          return throwError('Error adding book, please try again later.');
-        })
-      );
+    return this.httpClient.delete<boolean>(`${this.apiUrl}/delete-book/${id}`, { headers });
   }
 }
