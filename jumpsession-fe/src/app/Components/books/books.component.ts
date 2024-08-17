@@ -41,7 +41,13 @@ export class BooksComponent {
 
   onRowClick(book: Book): void {
     console.log('Row clicked:', book);
-    this.id=  book.id;
+    alert("Book ?");
+    this.bookService.deleteBookById(book.id).subscribe({
+      next: ()=>{
+        console.log("Deleted");
+      }
+
+    })
   }
 
   openAddBookModal() {

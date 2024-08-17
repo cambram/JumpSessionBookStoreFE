@@ -27,4 +27,10 @@ export class BooksService {
         })
       );
   }
+
+  deleteBookById(id : number): Observable<boolean> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.httpClient.delete<boolean>(`${this.apiUrl}/delete-book/${id}`, { headers });
+  }
 }
