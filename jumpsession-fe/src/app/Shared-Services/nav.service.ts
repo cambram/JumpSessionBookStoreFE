@@ -6,9 +6,9 @@ import { Profile } from '../Models/profile';
 })
 export class NavService {
 
-  // public showNav = true;
+  public showNav = true;
   public selectedProfile : Profile | null = null;
-  public showNav = false;
+  // public showNav = false;
 
   constructor() { }
 

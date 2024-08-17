@@ -14,6 +14,8 @@ export class BooksComponent {
   searchTerm: string = '';
   errorMessage: string = '';
 
+  isAddBookModalVisible: boolean = false;
+
   constructor(private bookService: BooksService) {}
 
   ngOnInit() {
@@ -40,5 +42,17 @@ export class BooksComponent {
     console.log('Row clicked:', book);
   }
 
-  // ToDo: open modal
+  openAddBookModal() {
+    console.log('add book clicked');
+    this.isAddBookModalVisible = true;
+  }
+  
+  closeAddBookModal() {
+    this.isAddBookModalVisible = false;
+  }
+
+  onBookAdded(book: Book): void {
+    //this.loadUsers();
+    this.closeAddBookModal();
+  }
 }

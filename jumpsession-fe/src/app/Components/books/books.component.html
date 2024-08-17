@@ -1,8 +1,15 @@
 <div class="container mt-1">
-  <!-- ToDo: Create book -->
     <div class="card">
       <div class="card-body">
-        <h2 class="card-title text-center mb-4">Books List</h2>
+        <div class="row">
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary" (click)="openAddBookModal()">Add Book</button>
+          </div>
+          <div class="col-md-8 text-center">
+            <h2 class="card-title mb-4">Books List</h2>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
         <div class="form-group mb-2">
           <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (input)="filterBooks()">
         </div>
@@ -33,3 +40,7 @@
       </div>
     </div>
   </div>
+
+<app-addbook *ngIf="isAddBookModalVisible" (close)="closeAddBookModal()"
+  (bookAdded)="onBookAdded($event)">
+</app-addbook>
