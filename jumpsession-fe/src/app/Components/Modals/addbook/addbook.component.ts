@@ -19,6 +19,19 @@ export class AddbookComponent {
 
   constructor(private booksService: BooksService) { }
 
+  /*saveBook() {
+    this.profileService.createUser(this.profile).subscribe(
+      (book: Profile) => {
+        console.log('User created successfully:', createdProfile);
+        this.userCreated.emit(createdProfile); // Emit the userCreated event
+        this.closeModal();
+      },
+      error => {
+        console.error('Error creating user:', error);
+      }
+    );
+  }*/
+
   closeModal() {
     this.close.emit();
   }
