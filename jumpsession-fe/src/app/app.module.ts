@@ -13,7 +13,7 @@ import { AssignComponent } from './Components/assign/assign.component';
 import { BookAlocationModalComponent } from './Components/Modals/book-alocation-modal/book-alocation-modal.component';
 import { CreateUserModalComponent } from './Components/Modals/create-user-modal/create-user-modal.component';
 import { ConfirmAssignComponent } from './Components/confirm-assign/confirm-assign.component';
-import { AddbookComponent } from './Components/addbook/addbook.component';
+import { AddbookComponent } from './Components/Modals/addbook/addbook.component';
 
 @NgModule({
   declarations: [

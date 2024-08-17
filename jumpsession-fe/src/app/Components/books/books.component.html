@@ -40,3 +40,7 @@
       </div>
     </div>
   </div>
+
+<app-addbook *ngIf="isAddBookModalVisible" (close)="closeAddBookModal()"
+  (bookAdded)="onBookAdded($event)">
+</app-addbook>
