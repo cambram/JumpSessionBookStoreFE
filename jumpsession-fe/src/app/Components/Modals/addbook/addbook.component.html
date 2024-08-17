@@ -7,7 +7,7 @@
         <button type="button" class="btn-close position-absolute p-2" style="right: 1rem; top: 1rem; background-color: transparent; border: none;" aria-label="Close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <form> <!--(submit)="saveProfile()"-->
+        <form (submit)="saveBook()">
           <div class="form-group">
             <label for="book_name">Book Name</label>
             <input type="text" class="form-control" id="book_name" name="book_name" placeholder="Enter Book Name" required> 

@@ -11,7 +11,8 @@ export class AddbookComponent {
   @Output() close = new EventEmitter<void>();
   @Output() bookAdded = new EventEmitter<Book>();
 
-  book: Omit<Book, 'id'> = {
+  book: Book = {
+    id: 0,
     book_name: '',
     isbn_number: '',
     author: ''
@@ -19,18 +20,28 @@ export class AddbookComponent {
 
   constructor(private booksService: BooksService) { }
 
-  /*saveBook() {
-    this.profileService.createUser(this.profile).subscribe(
-      (book: Profile) => {
-        console.log('User created successfully:', createdProfile);
-        this.userCreated.emit(createdProfile); // Emit the userCreated event
+  saveBook() {
+    this.booksService.addBook(this.book).subscribe({
+      next: book => {
+        console.log('User created successfully:', book);
+        this.bookAdded.emit(book[0]); // Emit the userCreated event
         this.closeModal();
       },
-      error => {
+      error: error => {
         console.error('Error creating user:', error);
       }
-    );
-  }*/
+    });
+    // this.booksService.addBook(this.book).subscribe(
+    //   (addedBook: Book) => {
+        // console.log('User created successfully:', addedBook);
+        // this.bookAdded.emit(addedBook); // Emit the userCreated event
+        // this.closeModal();
+    //   },
+    //   error => {
+    //     console.error('Error creating user:', error);
+    //   }
+    // );
+  }
 
   closeModal() {
     this.close.emit();

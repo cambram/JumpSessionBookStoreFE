@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Book } from '../Models/book';
@@ -28,7 +28,7 @@ export class BooksService {
       );
   }
 
-  deleteBookById(id : number): Observable<boolean> {
+ deleteBookById(id : number): Observable<boolean> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.httpClient.delete<boolean>(`${this.apiUrl}/delete-book/${id}`, { headers });
