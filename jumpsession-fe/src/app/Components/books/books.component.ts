@@ -41,4 +41,7 @@ export class BooksComponent {
   }
 
   // ToDo: open modal
+  openAddBookModal() {
+    console.log('add book clicked');
+  }
 }
