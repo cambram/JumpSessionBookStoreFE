@@ -13,6 +13,7 @@ export class BooksComponent {
   filteredBooks: Book[] = [];
   searchTerm: string = '';
   errorMessage: string = '';
+  id : number = 0;
 
   isAddBookModalVisible: boolean = false;
 
@@ -40,6 +41,7 @@ export class BooksComponent {
 
   onRowClick(book: Book): void {
     console.log('Row clicked:', book);
+    this.id=  book.id;
   }
 
   openAddBookModal() {
